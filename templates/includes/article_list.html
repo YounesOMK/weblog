@@ -1,0 +1,35 @@
+{% for article in articles %}
+
+<div class="shadow-sm p-2 bg-light" >
+    <div class="d-flex justify-content-between align-items-center gap-2" >
+        <div class="article-related-icon border-end text-center" >
+            <i data-bs-toggle="tooltip" data-bs-placement="left" title="Python related article" class="{{ article.icon_class }} fa-3x px-2"></i>
+        </div>
+        <div class="flex-fill" >
+            <a class="link-secondary fs-5 text-decoration-none" href="{{ article.get_absolute_url }}">
+                {{ article.title }}
+            </a>
+            <div class="d-flex justify-content-between align-items-center" >
+                <div class="text-muted fst-italic" >
+                    <i class="fa-solid fa-tags"></i>
+                    {% for tag in article.tags.all %}
+                        <a class="text-decoration-none text-secondary" href="{% url 'blog:article_list_by_tag' tag.slug %}">{{ tag }}</a>
+                    {% if not forloop.last %}
+                        ,
+                    {% else %}
+
+                    {% endif %}
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="fst-italic small text-muted" >
+            <i class="fa-solid fa-clock"></i> {{ article.publish|timesince }} ago
+        </div>
+    </div>
+</div>
+
+{% empty %}
+
+{% endfor %}

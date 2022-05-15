@@ -1,0 +1,56 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+
+    {% include 'includes/about_me.html' %}
+
+
+
+    <section class="blogs" >
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-8">
+                <h2 class="text-center h4 my-3 text-uppercase" >
+                    Weblogs
+                </h2>
+                <div id="article-list" class="d-grid gap-2">
+
+                    {% include 'includes/article_list.html' %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="my-2" >
+        <div class="row justify-content-center align-items-center" >
+            <div class="col-md-8">
+                <div class="d-flex justify-content-end gap-2">
+                    <!-- {% if articles.has_previous %}
+                        <a class="btn btn-secondary" hx-get="?page={{ articles.previous_page_number }}"  hx-trigger="click" hx-target="#article-list" >Previous</a>
+                    {% endif %}
+                    {% if articles.has_next %}
+                        <a class="btn btn-secondary" hx-get="?page={{ articles.next_page_number }}"  hx-trigger="click"  hx-target="#article-list" >Next</a>
+                    {% endif %} -->
+
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="pagesMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                           {{ articles.paginator.num_pages }} pages available
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="pagesMenu">
+                            {% for page in articles.paginator %}
+                                <li hx-get="?page={{ page.number }}"  hx-trigger="click"  hx-target="#article-list" ><a class="dropdown-item">{{ page.number }}</a></li>
+                            {% endfor %}
+
+                        </ul>
+                      </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+{% endblock %}
+

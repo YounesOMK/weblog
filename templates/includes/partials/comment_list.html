@@ -1,0 +1,10 @@
+{% for comment in comments %}
+    <div class="comment bg-white rounded my-2 p-2" >
+        <span class="h4 fw-lighter border-bottom " >{{ comment.owner_pseudo_name }}</span>
+        <p class="lead text-muted my-2" >
+            {{ comment.comment }}
+        </p>
+    </div>
+{% empty %}
+    <p class="fst-italic text-center py-2 " >No comments yet. Add yours using the form bellow :)</p>
+{% endfor %} 

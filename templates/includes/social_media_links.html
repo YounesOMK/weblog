@@ -1,0 +1,17 @@
+{% load blog_tags %}
+
+{% get_social_media_links as brands %}
+
+<div class="d-flex justify-content-center align-items-center gap-2 social-media" >
+
+    {% for brand in brands %}
+
+    <a class="link-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ brand.name }}" href="{{ brand.url }}" >
+        <i class="{{ brand.icon_class }} fa-2x"></i>
+    </a>
+
+    {% empty %}
+    <span class="fst-italic fw-light" >social media links are not provided</span>
+    {% endfor %}
+
+</div>

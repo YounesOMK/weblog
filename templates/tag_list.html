@@ -1,0 +1,38 @@
+{% extends '_base.html' %}
+{% load blog_tags %}
+
+{% block content %}
+
+
+    {% include 'includes/about_me.html' %}
+
+
+
+    <section class="tags" >
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-8">
+                <h2 class="text-center h4 my-3 text-uppercase" >
+                    Tags
+                </h2>
+                <div class="row">
+                    {% for tag in tags %}
+                        <div class="col-md-4">
+                            <div class="bg-light shadow-sm text-center p-4 m-1" >
+                                <a href="{% url 'blog:article_list_by_tag' tag.slug %}" class="uppercase h5 text-decoration-none" >{{ tag.name }}</a>
+                                <div class="my-2" ><span class="badge bg-secondary" >{{ tag|count_articles }}</span> related article{{ tag|count_articles|pluralize }}</div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        
+                    {% endfor %}
+                </div>
+    
+                    
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock %}
+

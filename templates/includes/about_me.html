@@ -1,0 +1,22 @@
+{% load static %}
+{% load blog_tags %}
+
+{% get_personal_info as information %}
+<section class="my-2" >
+    <div class="row justify-content-center align-items-center text-center ">
+        <div class="col-md-8">
+            <div class="personal-information" >
+                <img class="img-fluid rounded-circle shadow" src="{% static 'images/img.webp' %}" alt="">
+                <h1 class="h4 fw-bolder text-uppercase my-3 " >{{ information.last_name }} {{ information.first_name }}</h1>
+            </div>
+            <p class="lead fs-4 fw-light">
+                {% if information.description %}
+                    {{ information.description }}
+                {% endif %}
+            </p>
+
+            {% include 'includes/social_media_links.html' %}
+            
+        </div>
+    </div>
+</section>

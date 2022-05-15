@@ -1,0 +1,30 @@
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.personal-information img {
+    filter: grayscale(100%);
+    height: 17%;
+    width: 17%;
+}
+
+
+.blogs h2 {
+    display: flex;
+    flex-direction: row;
+}
+
+.blogs h2:before, .blogs h2:after{
+    content: "";
+    flex: 1 1;
+    border-bottom: 1px solid #ddd;
+    margin: auto;
+}
+
+
+.article-related-icon {
+    width: 5rem;
+}
+
+
